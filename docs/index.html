@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Coup-Proofing via Capital Relocation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-01c78b5cd655e4cd89133cf59d535862.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-523b4dc3dad50da7e5c9dee1e7f3f290.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: black;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: black;
+background: #E69F0095;
+      }
+</style>
+
+
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Coup-Proofing via Capital Relocation</h1>
+            <p class="subtitle lead">DSAN 6750 / PPOL 6805: GIS for Spatial Data Science</p>
+                      </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author">Yuang Huang </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              Georgetown University
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta">
+
+        
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Urban environments are complex landscapes where social, economic, and environmental factors intertwine to influence patterns of human activity, including crime. Among various crime types, carjackings represent a particularly concerning form of violent crime, as they often occur unexpectedly and pose significant risks to personal safety and public perception of security. Understanding the spatial distribution and underlying socioeconomic correlates of carjackings can offer valuable insights for policymakers, law enforcement, and urban planners aiming to reduce such incidents and improve community well-being.</p>
+<p><strong>Topic and Data Selection</strong>:<br>
+In this project, we focus on the <strong>spatial analysis of carjacking incidents in Chicago</strong>, one of the largest and most diverse metropolitan areas in the United States. Chicago’s complex social geography—ranging from affluent downtown neighborhoods to underserved, lower-income communities—provides a rich context in which to examine how socioeconomic conditions may influence crime patterns. By investigating where and why carjackings cluster, we can move beyond general crime statistics and gain a more nuanced understanding of the local factors that shape crime risk.</p>
+<p><strong>Rationale for Choosing This Topic</strong>:<br>
+Carjackings represent a type of crime that directly impacts both perceptions of public safety and the practical realities of transportation and mobility within a city. Unlike property crimes that may cluster around commercial zones or violent crimes that may concentrate in particular nightlife districts, carjackings can occur in residential neighborhoods, near transit hubs, or close to amenities like shopping centers and schools. Thus, examining carjackings offers a window into the interplay of social vulnerability, opportunity structures for offenders, and environmental conditions that collectively influence where and when these incidents happen.</p>
+<p>Moreover, by grounding the analysis in a city with well-documented socioeconomic disparities, we can test hypotheses that link crime not merely to place-based opportunities but also to structural inequalities. If lower-income areas not only experience more frequent carjackings (a “first-order” difference in intensity) but also show more pronounced clustering of these crimes at small scales (a “second-order” difference in spatial pattern), this suggests more than just higher crime rates—it indicates different underlying spatial processes and risk factors.</p>
+<p><strong>Project Aims</strong>:<br>
+In the following sections, we will:<br>
+- Define our hypotheses related to both first-order and second-order properties of the carjacking distribution.<br>
+- Present initial evidence—both visual and statistical—to examine whether communities with lower median income indeed have higher carjacking densities, and whether these incidents are more spatially clustered in these areas.<br>
+- Employ formal spatial analysis methods, including Ripley’s K-function with Monte Carlo simulations, to rigorously assess the significance of observed patterns.<br>
+- Draw preliminary conclusions and propose a roadmap for further refinement of the analysis, potentially incorporating additional data layers, time-series perspectives, and more advanced spatial modeling techniques.</p>
+<p>By the end of this project, we aim to demonstrate how GIS and spatial data science tools can provide critical insights into the spatial ecology of urban crime, offering a more informed basis for intervention strategies and long-term urban policy planning.</p>
+<section id="hypothesis-development" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-development">Hypothesis Development</h2>
+<p>Building on the context provided in the Introduction, we now turn to the core analytical questions guiding our investigation. Previously, we established the rationale for focusing on carjackings in Chicago and discussed the potential influence of socioeconomic factors, particularly median income, on the spatial distribution of crime. The next step is to formulate clear, testable hypotheses that bridge the conceptual groundwork with the GIS and spatial data science tools at our disposal.</p>
+<p>The key premise is that not only might lower-income neighborhoods experience more frequent carjacking incidents, but these incidents may also be organized differently in space. To address this, we consider two types of spatial properties:</p>
+<ol type="1">
+<li><strong>First-Order Property (Intensity/Rate)</strong>: How does the underlying intensity or density of incidents vary across space, independent of their arrangement relative to one another?<br>
+</li>
+<li><strong>Second-Order Property (Spatial Clustering)</strong>: How do events relate to each other in space? Do they form clusters or patterns at certain scales, above and beyond what could be explained by broad variation in area-level intensity?</li>
+</ol>
+<p><strong>First-Order Hypothesis</strong>:<br>
+- <strong>H1</strong>: Lower-income communities in Chicago have a higher density of carjackings than higher-income communities.</p>
+<p>This hypothesis reflects the idea that socioeconomic disadvantage might directly correlate with elevated crime intensity. If data show that these neighborhoods consistently record more incidents per square kilometer, we will have initial evidence suggesting that limited resources or structural inequalities translate into greater vulnerability to crime.</p>
+<p><strong>Second-Order Hypothesis</strong>:<br>
+- <strong>H2</strong>: In addition to higher overall densities, lower-income communities exhibit stronger local clustering of carjacking incidents at small spatial scales, relative to higher-income communities.</p>
+<p>While the first-order hypothesis addresses differences in the frequency of crime, the second-order hypothesis asks whether the crimes themselves tend to bunch together more tightly. A confirmation of this hypothesis would indicate that lower-income areas not only suffer from higher rates of carjacking, but that these incidents may also be more spatially concentrated into hotspots or micro-locations of heightened risk.</p>
+<p><strong>Why Both Properties Matter</strong>:<br>
+Examining both first- and second-order properties provides a more complete picture of how socioeconomic factors shape crime patterns. A simple difference in density (H1) could be explained by area-wide conditions (e.g., fewer job opportunities, less robust policing, lower collective efficacy). However, if we also find that incidents cluster more intensely at small distances (H2), it suggests that the underlying spatial processes are more complex. Such findings might point to specific local factors—certain streets, intersections, or facilities within low-income areas—that generate recurring opportunities or incentives for offenders.</p>
+<p>By articulating these two hypotheses, we set the stage for the subsequent analyses. In the sections that follow, we will present initial visual and statistical evidence, apply rigorous spatial analysis techniques (such as Ripley’s K-function and Monte Carlo simulations), and ultimately compare the observed patterns against these predicted spatial relationships. This approach allows us to move beyond broad claims and ground our conclusions in empirical spatial data, providing a more nuanced understanding of the interplay between socioeconomic conditions and urban crime.</p>
+</section>
+<section id="preliminary-analysis-and-initial-conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="preliminary-analysis-and-initial-conclusions">Preliminary Analysis and Initial Conclusions</h2>
+<p>To gain an initial understanding of how socioeconomic conditions—particularly median income—may influence carjacking patterns in Chicago, we present four complementary pieces of evidence. Each figure provides a unique perspective, from income classification and carjacking intensity to interactive exploration and formal spatial clustering analysis. Together, they guide our preliminary assessment of both the first-order (intensity) and second-order (clustering) hypotheses.</p>
+<section id="income-based-community-classification-figure-1" class="level3">
+<h3 class="anchored" data-anchor-id="income-based-community-classification-figure-1">1. Income-Based Community Classification (Figure 1)</h3>
+<p><strong>Figure 1:</strong> <a href="images/c1.png">Community Income Classification</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/c1.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 1: Communities by Income Group</figcaption>
+</figure>
+</div>
+<p>This figure classifies Chicago’s communities into ‘low’ and ‘high’ median income groups relative to the city-wide median. Lighter turquoise hues indicate lower-income neighborhoods, and darker blues correspond to higher-income ones. While this map alone shows no crime data, it delineates the socioeconomic landscape. By pinpointing where lower-income areas lie, we set the spatial frame for subsequent comparisons with carjacking patterns.</p>
+</section>
+<section id="carjacking-density-map-figure-2" class="level3">
+<h3 class="anchored" data-anchor-id="carjacking-density-map-figure-2">2. Carjacking Density Map (Figure 2)</h3>
+<p><strong>Figure 2:</strong> <a href="images/c2.png">Carjackings Density per sq. km</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/c2.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 2: Carjackings Density</figcaption>
+</figure>
+</div>
+<p>In this map, communities are shaded by their carjacking density (incidents per square kilometer). Darker reds signal higher densities. Comparing Figure 2 with Figure 1 reveals that many lower-income neighborhoods also appear in deeper red tones, suggesting elevated carjacking rates. This observation provides preliminary support for our first-order hypothesis—that less affluent communities tend to experience higher intensities of carjacking incidents.</p>
+</section>
+<section id="interactive-exploration-tool-figure-3" class="level3">
+<h3 class="anchored" data-anchor-id="interactive-exploration-tool-figure-3">3. Interactive Exploration Tool (Figure 3)</h3>
+<p><strong>Figure 3:</strong> <a href="images/my_interactive_map.html">Interactive Map</a></p>
+<p>To complement static maps, we developed an interactive folium-based visualization accessible via <code>images/my_interactive_map.html</code>. By opening this file in a web browser, one can hover over or click on any community to view its median income, carjacking count, computed density, and income group. This interactivity allows direct neighborhood-level inspection, making the observed relationship between low income and higher carjacking intensity more tangible and immediate. While this tool does not provide formal statistical validation, it reinforces and elucidates the patterns observed in Figures 1 and 2.</p>
+</section>
+<section id="spatial-clustering-analysis-figure-4" class="level3">
+<h3 class="anchored" data-anchor-id="spatial-clustering-analysis-figure-4">4. Spatial Clustering Analysis (Figure 4)</h3>
+<p><strong>Figure 4:</strong> <a href="images/c4.png">Ripley’s K-function Analysis</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/c4.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 4: Ripley’s K Function</figcaption>
+</figure>
+</div>
+<p>To address the second-order hypothesis—whether lower-income areas not only have more carjackings but also exhibit tighter spatial clustering—we employed Ripley’s K-function along with 999 Monte Carlo simulations. The observed K-function curve (red line) rising above the random envelope (gray band) indicates significant clustering of carjackings at multiple spatial scales. Preliminary subset analyses (not fully shown here) suggest that at smaller distances, lower-income communities show even stronger clustering. This supports the second-order hypothesis: in addition to having higher event frequencies, certain communities may experience more localized hotspots of crime.</p>
+</section>
+<section id="initial-conclusions" class="level3">
+<h3 class="anchored" data-anchor-id="initial-conclusions">Initial Conclusions</h3>
+<ul>
+<li><p><strong>First-Order Evidence</strong>: Figures 1 and 2 together suggest that lower-income areas generally exhibit higher carjacking densities. The interactive exploration (Figure 3) further substantiates this pattern, allowing for intuitive and immediate verification on a community-by-community basis.</p></li>
+<li><p><strong>Second-Order Evidence</strong>: Figure 4’s K-function analysis reveals that carjackings are not randomly scattered; they cluster spatially. Evidence that such clustering intensifies in lower-income communities at smaller scales aligns with our second-order hypothesis, implying that socioeconomic disadvantage may shape not only the frequency but also the spatial arrangement of crimes.</p></li>
+</ul>
+<p>In sum, these four pieces of evidence—income classification, density mapping, interactive inquiry, and spatial clustering analysis—provide a coherent preliminary picture. Lower-income neighborhoods appear more prone to both higher carjacking intensities and stronger clustering. Although these findings are preliminary and do not yet control for other factors (e.g., population density, policing intensity, temporal variations), they establish a promising foundation for further, more rigorous analyses. Future steps might involve integrating additional explanatory variables, conducting time-series assessments, and applying advanced spatial econometric models to refine these insights and guide more effective policy interventions.</p>
+</section>
+</section>
+<section id="formal-hypothesis-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="formal-hypothesis-evaluation">Formal Hypothesis Evaluation</h2>
+<p>Having established our initial visual insights, we now proceed to a more rigorous hypothesis-evaluation approach. Following the general template for formal spatial hypothesis testing, we:</p>
+<ol type="1">
+<li><p><strong>Compute and visualize the intensity function and/or pairwise correlation function for the observed data.</strong><br>
+By focusing on Ripley’s K-function, we quantify how the observed carjacking incidents deviate from complete spatial randomness (CSR) across multiple distance scales. We have already identified broad clustering patterns, but now we refine this analysis to specifically compare lower-income and higher-income communities.</p></li>
+<li><p><strong>Run 999 Monte Carlo simulations under the null hypothesis of CSR.</strong><br>
+Under the null hypothesis, we assume that carjacking events in a given subset (e.g., low-income or high-income neighborhoods) are randomly distributed, given the same number of points and the same spatial domain. For each subset, we simulate 999 such patterns, computing the K-function for each. From these simulations, we construct an envelope representing the range of K-values we would expect under pure randomness.</p></li>
+<li><p><strong>Compare the observed K-functions with those of the simulated patterns.</strong><br>
+If the observed curve lies above the random envelope, it indicates more clustering than expected by chance; if it lies within or below, we cannot reject the null hypothesis of CSR.</p></li>
+</ol>
+<section id="results-from-formal-hypothesis-testing" class="level3">
+<h3 class="anchored" data-anchor-id="results-from-formal-hypothesis-testing">Results from Formal Hypothesis Testing</h3>
+<p><strong>Figure 1:</strong> K-function for Low-Income Areas (<code>images/c5.png</code>)<br>
+<img src="images/c5.png" class="img-fluid" alt="Figure 1: K-function (Low-Income Areas)"></p>
+<p>For lower-income neighborhoods, the observed K-function (red line) consistently exceeds the upper boundary of the simulated envelope (gray band) at all examined distances. This suggests a significant departure from randomness—incidents in low-income areas are not only more frequent but also form tight clusters, particularly at smaller scales, as indicated by the steep initial rise in K-values.</p>
+<p><strong>Figure 2:</strong> K-function for High-Income Areas (<code>images/c6.png</code>)<br>
+<img src="images/c6.png" class="img-fluid" alt="Figure 2: K-function (High-Income Areas)"></p>
+<p>High-income neighborhoods also show the observed K-function above the random envelope, signaling a statistically significant clustering of carjackings. However, by comparing the degree of clustering (vertical magnitude above the envelope) and the curvature at small distances, high-income areas seem to have less extreme clustering at the very smallest scales compared to low-income areas, though still significantly non-random.</p>
+<p><strong>Figure 3:</strong> Normalized Comparison of K-functions (<code>images/c7.png</code>)<br>
+<img src="images/c7.png" class="img-fluid" alt="Figure 3: Normalized K-function Comparison"></p>
+<p>To facilitate direct comparison between low- and high-income areas, we normalize the observed K-values by the mean of the simulated distributions. A value above 1.0 implies more clustering than expected at random. At very short distances (e.g., &lt;1000m), the normalized K-function for low-income areas spikes dramatically, reaching levels around 7 times the random baseline. High-income areas also exceed the random baseline, but not as sharply, especially at the smallest scales. As distance increases, the difference between low- and high-income normalized K-values gradually diminishes, but both remain above the baseline, confirming the presence of clustering in both types of communities.</p>
+</section>
+<section id="interpretation-and-validation-of-hypotheses" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation-and-validation-of-hypotheses">Interpretation and Validation of Hypotheses</h3>
+<ul>
+<li><p><strong>First-Order Hypothesis (Higher Density in Lower-Income Areas)</strong>:<br>
+While the intensity of incidents (a first-order property) was initially suggested by simple density maps, these K-function analyses, along with Monte Carlo simulations, confirm that observed patterns are not solely a product of random fluctuations. The consistently higher-than-random K-values in low-income neighborhoods indicate that these areas do not just have more incidents per unit area—they also deviate significantly from a random spatial arrangement. This reinforces the idea that first-order differences in intensity are real and not a statistical artifact.</p></li>
+<li><p><strong>Second-Order Hypothesis (Stronger Clustering in Lower-Income Areas at Small Scales)</strong>:<br>
+The low-income subset shows dramatically higher normalized K-values at short distances, indicating more intense clustering in micro-locations. This confirms that second-order properties are also at play: the spatial arrangement of incidents in lower-income areas is not just denser overall, but the points themselves are more tightly grouped than random processes would produce. While high-income neighborhoods also show clustering, the contrast in the normalized results strongly suggests that socioeconomic disadvantage intensifies the spatial concentration of crime at fine geographic scales.</p></li>
+</ul>
+</section>
+<section id="conclusion-from-the-formal-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion-from-the-formal-analysis">Conclusion from the Formal Analysis</h3>
+<p>These Monte Carlo-based K-function comparisons provide a rigorous statistical footing for our earlier visual observations. They validate both our first-order and second-order hypotheses:</p>
+<ul>
+<li>Lower-income areas do experience higher incident intensities and more substantial clustering than would be expected under random conditions.</li>
+<li>High-income areas also show clustering, but the extreme small-scale clustering effect is more pronounced in lower-income neighborhoods.</li>
+</ul>
+<p>Thus, the formal hypothesis-evaluation approach confirms and refines our initial conclusions, emphasizing the role socioeconomic conditions play in shaping not just how many carjacking events occur, but also their spatial configuration. Future work will focus on integrating additional covariates, exploring temporal patterns, and applying even more sophisticated spatial econometric models to further understand and interpret these results.</p>
+</section>
+</section>
+<section id="roadmap-for-further-exploration-and-refinement" class="level2">
+<h2 class="anchored" data-anchor-id="roadmap-for-further-exploration-and-refinement">Roadmap for Further Exploration and Refinement</h2>
+<p>To improve the rigor and depth of our findings, several concrete steps must be taken. These next steps focus on enhancing data quality, incorporating additional variables, applying more advanced analytical methods, conducting comparative studies, and establishing stronger policy relevance. By systematically implementing these measures, we can refine our initial conclusions and provide more robust insights into the socioeconomic influences on the spatial distribution and clustering of carjackings.</p>
+<p><strong>1. Improve Data Completeness and Temporal Coverage</strong>:<br>
+The current dataset lacks comprehensive incident records for certain neighborhoods and time periods. We will acquire additional historical records, ensuring consistent coverage across all communities and years under study. Incorporating finer temporal granularity (e.g., time-of-day, seasonal effects) will allow us to identify patterns that may vary over shorter time scales. These efforts ensure a more stable and representative dataset, thereby increasing confidence in the derived conclusions.</p>
+<p><strong>2. Integrate Richer Socioeconomic and Environmental Indicators</strong>:<br>
+Current analyses rely heavily on median income as a key socioeconomic variable. To better isolate income effects, we will include population density, unemployment rates, age structures, educational attainment, and other demographic metrics. Moreover, adding environmental and infrastructural indicators—such as street lighting quality, the presence of public transit stops, major roads, and commercial hubs—will enable us to pinpoint local drivers of hotspots. By controlling for multiple factors, we can more accurately distinguish the role of income from other correlates and contextual conditions.</p>
+<p><strong>3. Employ Advanced Spatial Statistical Techniques</strong>:<br>
+While the K-function and basic Monte Carlo simulations provide initial confirmation of spatial clustering, we will apply local indicators of spatial association (LISA) and the Getis-Ord Gi* statistic to identify specific subregions or blocks driving the clustering patterns. Furthermore, spatial econometric models (e.g., spatial lag or spatial error models) and geographically weighted regression (GWR) will help disentangle complex spatial dependencies, yielding more precise estimates of how income levels shape both the intensity and the arrangement of carjackings.</p>
+<p><strong>4. Conduct Comparative and Longitudinal Analyses</strong>:<br>
+Analyzing additional cities or extending the study period to multiple years enables us to test the stability and universality of the observed patterns. Observing changes over time and across different urban contexts strengthens the generalizability of our findings, revealing whether income-related clustering emerges as a consistent urban phenomenon or if it responds to evolving policies, economic shifts, or community initiatives.</p>
+<p><strong>5. Link Findings to Policy and Intervention Strategies</strong>:<br>
+Beyond academic interest, the ultimate goal is to inform practical interventions that enhance public safety. Identifying specific hotspots and understanding their socioeconomic drivers allows policymakers, law enforcement, and community organizations to target resource allocation more effectively. For instance, introducing improved street lighting, community policing initiatives, or economic development programs at identified hotspots may reduce both the frequency and clustering of carjackings. Continual monitoring of these interventions will clarify which strategies most effectively mitigate crime concentration in disadvantaged neighborhoods.</p>
+<p>In sum, by improving data quality, broadening the range of explanatory variables, applying more sophisticated spatial methods, conducting cross-contextual comparisons, and aligning our insights with policy actions, we will transform these preliminary findings into a more comprehensive and actionable understanding of how socioeconomic disparities shape urban crime landscapes.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
