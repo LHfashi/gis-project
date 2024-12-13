@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Coup-Proofing via Capital Relocation</title>
+<title>Spatial Analysis of Carjackings in Chicago: Socioeconomic Influences on Crime Intensity and Clustering</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -55,7 +55,7 @@ background: #E69F0095;
 </style>
 
 
-<meta name="citation_title" content="Coup-Proofing via Capital Relocation">
+<meta name="citation_title" content="Spatial Analysis of Carjackings in Chicago: Socioeconomic Influences on Crime Intensity and Clustering">
 <meta name="citation_author" content="Yuang Huang">
 <meta name="citation_language" content="en">
 </head>
@@ -65,7 +65,7 @@ background: #E69F0095;
 <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Coup-Proofing via Capital Relocation</h1>
+      <h1 class="title">Spatial Analysis of Carjackings in Chicago: Socioeconomic Influences on Crime Intensity and Clustering</h1>
             <p class="subtitle lead">DSAN 6750 / PPOL 6805: GIS for Spatial Data Science</p>
           </div>
 
@@ -125,9 +125,10 @@ background: #E69F0095;
   <li><a href="#conclusion-from-the-formal-analysis" id="toc-conclusion-from-the-formal-analysis" class="nav-link" data-scroll-target="#conclusion-from-the-formal-analysis">Conclusion from the Formal Analysis</a></li>
   </ul></li>
   <li><a href="#roadmap-for-further-exploration-and-refinement" id="toc-roadmap-for-further-exploration-and-refinement" class="nav-link" data-scroll-target="#roadmap-for-further-exploration-and-refinement">Roadmap for Further Exploration and Refinement</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="11-preview.html"><i class="bi bi-journal-code"></i>11.ipynb</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="11-preview.html"><i class="bi bi-journal-code"></i>11.ipynb</a></li><li><a href="docs\11-preview.html"><i class="bi bi-journal-code"></i>11.ipynb</a></li></ul></div></nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
@@ -145,7 +146,7 @@ background: #E69F0095;
 In this project, we focus on the <strong>spatial analysis of carjacking incidents in Chicago</strong>, one of the largest and most diverse metropolitan areas in the United States. Chicago’s complex social geography—ranging from affluent downtown neighborhoods to underserved, lower-income communities—provides a rich context in which to examine how socioeconomic conditions may influence crime patterns. By investigating where and why carjackings cluster, we can move beyond general crime statistics and gain a more nuanced understanding of the local factors that shape crime risk.</p>
 <p><strong>Rationale for Choosing This Topic</strong>:<br>
 Carjackings represent a type of crime that directly impacts both perceptions of public safety and the practical realities of transportation and mobility within a city. Unlike property crimes that may cluster around commercial zones or violent crimes that may concentrate in particular nightlife districts, carjackings can occur in residential neighborhoods, near transit hubs, or close to amenities like shopping centers and schools. Thus, examining carjackings offers a window into the interplay of social vulnerability, opportunity structures for offenders, and environmental conditions that collectively influence where and when these incidents happen.</p>
-<p>Moreover, by grounding the analysis in a city with well-documented socioeconomic disparities, we can test hypotheses that link crime not merely to place-based opportunities but also to structural inequalities. If lower-income areas not only experience more frequent carjackings (a “first-order” difference in intensity) but also show more pronounced clustering of these crimes at small scales (a “second-order” difference in spatial pattern), this suggests more than just higher crime rates—it indicates different underlying spatial processes and risk factors.</p>
+<p>By grounding the analysis in a city with well-documented socioeconomic disparities, we can test hypotheses that link crime not merely to place-based opportunities but also to structural inequalities. If lower-income areas not only experience more frequent carjackings (a “first-order” difference in intensity) but also show more pronounced clustering of these crimes at small scales (a “second-order” difference in spatial pattern), this suggests more than just higher crime rates—it indicates different underlying spatial processes and risk factors.</p>
 <p><strong>Project Aims</strong>:<br>
 In the following sections, we will:<br>
 - Define our hypotheses related to both first-order and second-order properties of the carjacking distribution.<br>
@@ -155,7 +156,7 @@ In the following sections, we will:<br>
 <p>By the end of this project, we aim to demonstrate how GIS and spatial data science tools can provide critical insights into the spatial ecology of urban crime, offering a more informed basis for intervention strategies and long-term urban policy planning.</p>
 <section id="hypothesis-development" class="level2">
 <h2 class="anchored" data-anchor-id="hypothesis-development">Hypothesis Development</h2>
-<p>Building on the context provided in the Introduction, we now turn to the core analytical questions guiding our investigation. Previously, we established the rationale for focusing on carjackings in Chicago and discussed the potential influence of socioeconomic factors, particularly median income, on the spatial distribution of crime. The next step is to formulate clear, testable hypotheses that bridge the conceptual groundwork with the GIS and spatial data science tools at our disposal.</p>
+<p>We now turn to the core analytical questions guiding our investigation. Previously, we established the rationale for focusing on carjackings in Chicago and discussed the potential influence of socioeconomic factors, particularly median income, on the spatial distribution of crime. The next step is to formulate clear, testable hypotheses that bridge the conceptual groundwork with the GIS and spatial data science tools at our disposal.</p>
 <p>The key premise is that not only might lower-income neighborhoods experience more frequent carjacking incidents, but these incidents may also be organized differently in space. To address this, we consider two types of spatial properties:</p>
 <ol type="1">
 <li><strong>First-Order Property (Intensity/Rate)</strong>: How does the underlying intensity or density of incidents vary across space, independent of their arrangement relative to one another?<br>
@@ -177,7 +178,7 @@ Examining both first- and second-order properties provides a more complete pictu
 <p>To gain an initial understanding of how socioeconomic conditions—particularly median income—may influence carjacking patterns in Chicago, we present four complementary pieces of evidence. Each figure provides a unique perspective, from income classification and carjacking intensity to interactive exploration and formal spatial clustering analysis. Together, they guide our preliminary assessment of both the first-order (intensity) and second-order (clustering) hypotheses.</p>
 <section id="income-based-community-classification-figure-1" class="level3">
 <h3 class="anchored" data-anchor-id="income-based-community-classification-figure-1">1. Income-Based Community Classification (Figure 1)</h3>
-<p><strong>Figure 1:</strong> <a href="images/c1.png">Community Income Classification</a></p>
+<p><strong>Figure 1:</strong> [Community Income Classification]</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="images/c1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure 1: Communities by Income Group"><img src="images/c1.png" class="img-fluid figure-img" alt="Figure 1: Communities by Income Group"></a></p>
@@ -188,7 +189,7 @@ Examining both first- and second-order properties provides a more complete pictu
 </section>
 <section id="carjacking-density-map-figure-2" class="level3">
 <h3 class="anchored" data-anchor-id="carjacking-density-map-figure-2">2. Carjacking Density Map (Figure 2)</h3>
-<p><strong>Figure 2:</strong> <a href="images/c2.png">Carjackings Density per sq. km</a></p>
+<p><strong>Figure 2:</strong> [Carjackings Density per sq. km]</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="images/c2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure 2: Carjackings Density"><img src="images/c2.png" class="img-fluid figure-img" alt="Figure 2: Carjackings Density"></a></p>
@@ -204,7 +205,7 @@ Examining both first- and second-order properties provides a more complete pictu
 </section>
 <section id="spatial-clustering-analysis-figure-4" class="level3">
 <h3 class="anchored" data-anchor-id="spatial-clustering-analysis-figure-4">4. Spatial Clustering Analysis (Figure 4)</h3>
-<p><strong>Figure 4:</strong> <a href="images/c4.png">Ripley’s K-function Analysis</a></p>
+<p><strong>Figure 4:</strong> [Ripley’s K-function Analysis]</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="images/c4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure 4: Ripley’s K Function"><img src="images/c4.png" class="img-fluid figure-img" alt="Figure 4: Ripley’s K Function"></a></p>
@@ -219,7 +220,7 @@ Examining both first- and second-order properties provides a more complete pictu
 <li><p><strong>First-Order Evidence</strong>: Figures 1 and 2 together suggest that lower-income areas generally exhibit higher carjacking densities. The interactive exploration (Figure 3) further substantiates this pattern, allowing for intuitive and immediate verification on a community-by-community basis.</p></li>
 <li><p><strong>Second-Order Evidence</strong>: Figure 4’s K-function analysis reveals that carjackings are not randomly scattered; they cluster spatially. Evidence that such clustering intensifies in lower-income communities at smaller scales aligns with our second-order hypothesis, implying that socioeconomic disadvantage may shape not only the frequency but also the spatial arrangement of crimes.</p></li>
 </ul>
-<p>In sum, these four pieces of evidence—income classification, density mapping, interactive inquiry, and spatial clustering analysis—provide a coherent preliminary picture. Lower-income neighborhoods appear more prone to both higher carjacking intensities and stronger clustering. Although these findings are preliminary and do not yet control for other factors (e.g., population density, policing intensity, temporal variations), they establish a promising foundation for further, more rigorous analyses. Future steps might involve integrating additional explanatory variables, conducting time-series assessments, and applying advanced spatial econometric models to refine these insights and guide more effective policy interventions.</p>
+<p>These four pieces of evidence—income classification, density mapping, interactive inquiry, and spatial clustering analysis—provide a coherent preliminary picture. Lower-income neighborhoods appear more prone to both higher carjacking intensities and stronger clustering. Although these findings are preliminary and do not yet control for other factors (e.g., population density, policing intensity, temporal variations), they establish a promising foundation for further, more rigorous analyses. Future steps might involve integrating additional explanatory variables, conducting time-series assessments, and applying advanced spatial econometric models to refine these insights and guide more effective policy interventions.</p>
 </section>
 </section>
 <section id="formal-hypothesis-evaluation" class="level2">
@@ -235,11 +236,9 @@ If the observed curve lies above the random envelope, it indicates more clusteri
 </ol>
 <section id="results-from-formal-hypothesis-testing" class="level3">
 <h3 class="anchored" data-anchor-id="results-from-formal-hypothesis-testing">Results from Formal Hypothesis Testing</h3>
-<p><strong>Figure 1:</strong> K-function for Low-Income Areas (<code>images/c5.png</code>)<br>
-<img src="images/c5.png" class="img-fluid" alt="Figure 1: K-function (Low-Income Areas)"></p>
+<p><strong>Figure 5:</strong> K-function for Low-Income Areas <img src="images/c5.png" class="img-fluid" alt="Figure 5: K-function (Low-Income Areas)"></p>
 <p>For lower-income neighborhoods, the observed K-function (red line) consistently exceeds the upper boundary of the simulated envelope (gray band) at all examined distances. This suggests a significant departure from randomness—incidents in low-income areas are not only more frequent but also form tight clusters, particularly at smaller scales, as indicated by the steep initial rise in K-values.</p>
-<p><strong>Figure 2:</strong> K-function for High-Income Areas (<code>images/c6.png</code>)<br>
-<img src="images/c6.png" class="img-fluid" alt="Figure 2: K-function (High-Income Areas)"></p>
+<p><strong>Figure 6:</strong> K-function for High-Income Areas <img src="images/c6.png" class="img-fluid" alt="Figure 6: K-function (High-Income Areas)"></p>
 <p>High-income neighborhoods also show the observed K-function above the random envelope, signaling a statistically significant clustering of carjackings. However, by comparing the degree of clustering (vertical magnitude above the envelope) and the curvature at small distances, high-income areas seem to have less extreme clustering at the very smallest scales compared to low-income areas, though still significantly non-random.</p>
 <p><strong>Figure 3:</strong> Normalized Comparison of K-functions (<code>images/c7.png</code>)<br>
 <img src="images/c7.png" class="img-fluid" alt="Figure 3: Normalized K-function Comparison"></p>
@@ -261,7 +260,7 @@ The low-income subset shows dramatically higher normalized K-values at short dis
 <li>Lower-income areas do experience higher incident intensities and more substantial clustering than would be expected under random conditions.</li>
 <li>High-income areas also show clustering, but the extreme small-scale clustering effect is more pronounced in lower-income neighborhoods.</li>
 </ul>
-<p>Thus, the formal hypothesis-evaluation approach confirms and refines our initial conclusions, emphasizing the role socioeconomic conditions play in shaping not just how many carjacking events occur, but also their spatial configuration. Future work will focus on integrating additional covariates, exploring temporal patterns, and applying even more sophisticated spatial econometric models to further understand and interpret these results.</p>
+<p>The formal hypothesis-evaluation approach confirms and refines our initial conclusions, emphasizing the role socioeconomic conditions play in shaping not just how many carjacking events occur, but also their spatial configuration. Future work will focus on integrating additional covariates, exploring temporal patterns, and applying even more sophisticated spatial econometric models to further understand and interpret these results.</p>
 </section>
 </section>
 <section id="roadmap-for-further-exploration-and-refinement" class="level2">
@@ -278,6 +277,14 @@ Analyzing additional cities or extending the study period to multiple years enab
 <p><strong>5. Link Findings to Policy and Intervention Strategies</strong>:<br>
 Beyond academic interest, the ultimate goal is to inform practical interventions that enhance public safety. Identifying specific hotspots and understanding their socioeconomic drivers allows policymakers, law enforcement, and community organizations to target resource allocation more effectively. For instance, introducing improved street lighting, community policing initiatives, or economic development programs at identified hotspots may reduce both the frequency and clustering of carjackings. Continual monitoring of these interventions will clarify which strategies most effectively mitigate crime concentration in disadvantaged neighborhoods.</p>
 <p>In sum, by improving data quality, broadening the range of explanatory variables, applying more sophisticated spatial methods, conducting cross-contextual comparisons, and aligning our insights with policy actions, we will transform these preliminary findings into a more comprehensive and actionable understanding of how socioeconomic disparities shape urban crime landscapes.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This project investigated how socioeconomic factors, particularly median income, shape the intensity and spatial organization of carjackings in Chicago. We considered each step of the analysis, from hypothesizing the relationship between low-income communities and high carjacking densities to the detection of stronger spatial clustering within such neighborhoods at small scales.</p>
+<p><strong>Key Takeaways</strong>: - <strong>First-Order Evidence</strong>: Initial density maps were combined with subsequent statistical validation that showed carjackings per unit area were more frequent in low-income areas. This first-order difference in intensity forms the basis of how the structural inequalities and resource distribution matter for the baseline vulnerability to crime. - <strong>Second-Order Evidence</strong>: Formal spatial analyses, such as the use of Ripley’s K-function along with Monte Carlo simulations, demonstrated not only that there are more incidents in lower-income communities, but these incidents also cluster more tightly than would be expected under a random spatial process. The presence of such second-order spatial effects suggests localized environmental or social factors that make certain micro-locations especially susceptible to repeated offenses.</p>
+<p><strong>Implications</strong>: These findings demonstrate that socioeconomic inequalities do more than increase the volume of crime—they transform the spatial structure of crime. For such problems, policy responses should go beyond the one-size-fits-all approach to targeted intervention at micro-hotspots. Additional community resources, street lighting, and changes in public transportation are all fulcrums that can be used to break up pockets of concentrated criminal activity in low-income communities.</p>
+<p><strong>Future Directions</strong>: Our roadmap describes in considerable detail how this analysis can be further refined and extended: the improvement of data completeness and integration of further variables, deeper use of advanced spatial econometric and temporal models deepen this analysis. Such comparison might test stability and generalization of findings across cities and time. Finally, through the translation of insights to practice via focused interventions and subsequent evaluations, stakeholders can use spatial data science to inform smarter and more equitable urban crime prevention policy.</p>
+<p>Our study shows how GIS and spatial data science approaches can yield detailed, empirically based insights into the ecology of urban crime. By recognizing and acting to mitigate the socioeconomic drivers underlying the distribution and clustering of carjackings, cities can work toward safer, fairer urban environments.</p>
 </section>
 </section>
 

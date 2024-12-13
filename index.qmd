@@ -26,7 +26,7 @@ In this project, we focus on the **spatial analysis of carjacking incidents in C
 **Rationale for Choosing This Topic**:  
 Carjackings represent a type of crime that directly impacts both perceptions of public safety and the practical realities of transportation and mobility within a city. Unlike property crimes that may cluster around commercial zones or violent crimes that may concentrate in particular nightlife districts, carjackings can occur in residential neighborhoods, near transit hubs, or close to amenities like shopping centers and schools. Thus, examining carjackings offers a window into the interplay of social vulnerability, opportunity structures for offenders, and environmental conditions that collectively influence where and when these incidents happen.
 
-Moreover, by grounding the analysis in a city with well-documented socioeconomic disparities, we can test hypotheses that link crime not merely to place-based opportunities but also to structural inequalities. If lower-income areas not only experience more frequent carjackings (a "first-order" difference in intensity) but also show more pronounced clustering of these crimes at small scales (a "second-order" difference in spatial pattern), this suggests more than just higher crime rates—it indicates different underlying spatial processes and risk factors.
+By grounding the analysis in a city with well-documented socioeconomic disparities, we can test hypotheses that link crime not merely to place-based opportunities but also to structural inequalities. If lower-income areas not only experience more frequent carjackings (a "first-order" difference in intensity) but also show more pronounced clustering of these crimes at small scales (a "second-order" difference in spatial pattern), this suggests more than just higher crime rates—it indicates different underlying spatial processes and risk factors.
 
 **Project Aims**:  
 In the following sections, we will:  
@@ -40,7 +40,7 @@ By the end of this project, we aim to demonstrate how GIS and spatial data scien
 
 ## Hypothesis Development
 
-Building on the context provided in the Introduction, we now turn to the core analytical questions guiding our investigation. Previously, we established the rationale for focusing on carjackings in Chicago and discussed the potential influence of socioeconomic factors, particularly median income, on the spatial distribution of crime. The next step is to formulate clear, testable hypotheses that bridge the conceptual groundwork with the GIS and spatial data science tools at our disposal.
+We now turn to the core analytical questions guiding our investigation. Previously, we established the rationale for focusing on carjackings in Chicago and discussed the potential influence of socioeconomic factors, particularly median income, on the spatial distribution of crime. The next step is to formulate clear, testable hypotheses that bridge the conceptual groundwork with the GIS and spatial data science tools at our disposal.
 
 The key premise is that not only might lower-income neighborhoods experience more frequent carjacking incidents, but these incidents may also be organized differently in space. To address this, we consider two types of spatial properties:
 
@@ -103,7 +103,7 @@ To address the second-order hypothesis—whether lower-income areas not only hav
 
 - **Second-Order Evidence**: Figure 4’s K-function analysis reveals that carjackings are not randomly scattered; they cluster spatially. Evidence that such clustering intensifies in lower-income communities at smaller scales aligns with our second-order hypothesis, implying that socioeconomic disadvantage may shape not only the frequency but also the spatial arrangement of crimes.
 
-In sum, these four pieces of evidence—income classification, density mapping, interactive inquiry, and spatial clustering analysis—provide a coherent preliminary picture. Lower-income neighborhoods appear more prone to both higher carjacking intensities and stronger clustering. Although these findings are preliminary and do not yet control for other factors (e.g., population density, policing intensity, temporal variations), they establish a promising foundation for further, more rigorous analyses. Future steps might involve integrating additional explanatory variables, conducting time-series assessments, and applying advanced spatial econometric models to refine these insights and guide more effective policy interventions.
+These four pieces of evidence—income classification, density mapping, interactive inquiry, and spatial clustering analysis—provide a coherent preliminary picture. Lower-income neighborhoods appear more prone to both higher carjacking intensities and stronger clustering. Although these findings are preliminary and do not yet control for other factors (e.g., population density, policing intensity, temporal variations), they establish a promising foundation for further, more rigorous analyses. Future steps might involve integrating additional explanatory variables, conducting time-series assessments, and applying advanced spatial econometric models to refine these insights and guide more effective policy interventions.
 
 
 ## Formal Hypothesis Evaluation
@@ -131,8 +131,8 @@ For lower-income neighborhoods, the observed K-function (red line) consistently 
 
 High-income neighborhoods also show the observed K-function above the random envelope, signaling a statistically significant clustering of carjackings. However, by comparing the degree of clustering (vertical magnitude above the envelope) and the curvature at small distances, high-income areas seem to have less extreme clustering at the very smallest scales compared to low-income areas, though still significantly non-random.
 
-**Figure 7:** Normalized Comparison of K-functions
-![Figure 7: Normalized K-function Comparison](images/c7.png)
+**Figure 3:** Normalized Comparison of K-functions (`images/c7.png`)  
+![Figure 3: Normalized K-function Comparison](images/c7.png)
 
 To facilitate direct comparison between low- and high-income areas, we normalize the observed K-values by the mean of the simulated distributions. A value above 1.0 implies more clustering than expected at random. At very short distances (e.g., <1000m), the normalized K-function for low-income areas spikes dramatically, reaching levels around 7 times the random baseline. High-income areas also exceed the random baseline, but not as sharply, especially at the smallest scales. As distance increases, the difference between low- and high-income normalized K-values gradually diminishes, but both remain above the baseline, confirming the presence of clustering in both types of communities.
 
