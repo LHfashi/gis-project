@@ -170,10 +170,7 @@ While the K-function and basic Monte Carlo simulations provide initial confirmat
 **4. Conduct Comparative and Longitudinal Analyses**:  
 Analyzing additional cities or extending the study period to multiple years enables us to test the stability and universality of the observed patterns. Observing changes over time and across different urban contexts strengthens the generalizability of our findings, revealing whether income-related clustering emerges as a consistent urban phenomenon or if it responds to evolving policies, economic shifts, or community initiatives.
 
-**5. Link Findings to Policy and Intervention Strategies**:  
-Beyond academic interest, the ultimate goal is to inform practical interventions that enhance public safety. Identifying specific hotspots and understanding their socioeconomic drivers allows policymakers, law enforcement, and community organizations to target resource allocation more effectively. For instance, introducing improved street lighting, community policing initiatives, or economic development programs at identified hotspots may reduce both the frequency and clustering of carjackings. Continual monitoring of these interventions will clarify which strategies most effectively mitigate crime concentration in disadvantaged neighborhoods.
-
-In sum, by improving data quality, broadening the range of explanatory variables, applying more sophisticated spatial methods, conducting cross-contextual comparisons, and aligning our insights with policy actions, we will transform these preliminary findings into a more comprehensive and actionable understanding of how socioeconomic disparities shape urban crime landscapes.
+By improving data quality, broadening the range of explanatory variables, applying more sophisticated spatial methods, conducting cross-contextual comparisons, and aligning our insights with policy actions, we will transform these preliminary findings into a more comprehensive and actionable understanding of how socioeconomic disparities shape urban crime landscapes.
 
 
 ## Conclusion
